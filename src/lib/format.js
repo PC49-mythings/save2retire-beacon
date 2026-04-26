@@ -1,6 +1,6 @@
 // ─── Value formatters ─────────────────────────────────────────────────────────
 
-export const fmtPct   = v => v == null ? "—" : `${(v * 100).toFixed(1)}%`;
+export const fmtPct   = v => (v == null || isNaN(v)) ? "—" : `${(v * 100).toFixed(1)}%`;
 export const fmtCount = v => v == null ? "—" : Number(v).toLocaleString();
 export const fmtIndex = v => v == null ? "—" : Number(v).toFixed(0);
 

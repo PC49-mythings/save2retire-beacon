@@ -36,8 +36,8 @@ export default function Topics() {
       const topicId = metricKey.replace("ai_topic_pct_", "");
       for (const point of arr) {
         if (!pMap[point.period]) pMap[point.period] = { period: point.period, anxiety: 0, optimisation: 0 };
-        if (ANXIETY_TOPICS.includes(topicId) && point.ALL != null)       pMap[point.period].anxiety      += point.ALL;
-        if (OPTIMISATION_TOPICS.includes(topicId) && point.ALL != null)  pMap[point.period].optimisation += point.ALL;
+        if (ANXIETY_TOPICS.includes(topicId) && point.ALL != null && !isNaN(point.ALL))       pMap[point.period].anxiety      += point.ALL;
+        if (OPTIMISATION_TOPICS.includes(topicId) && point.ALL != null && !isNaN(point.ALL))  pMap[point.period].optimisation += point.ALL;
       }
     }
 
