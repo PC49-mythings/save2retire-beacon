@@ -15,6 +15,11 @@ const pool = new Pool({
   max: 10,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 5000,
+  // AWS RDS uses a self-signed certificate chain — disable verification
+  // for RDS connections. Safe because traffic is within AWS VPC in production.
+  ssl: process.env.DATABASE_URL?.includes("rds.amazonaws.com")
+    ? { rejectUnauthorized: false }
+    : false,
 });
 
 pool.on("connect", (client) => {

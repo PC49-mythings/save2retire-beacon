@@ -12,6 +12,9 @@ const { v4: uuidv4 } = require("uuid");
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   options: "-c search_path=beacon,public",
+  ssl: process.env.DATABASE_URL?.includes("rds.amazonaws.com")
+    ? { rejectUnauthorized: false }
+    : false,
 });
 
 async function q(text, params) {
