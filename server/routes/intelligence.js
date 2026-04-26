@@ -271,12 +271,13 @@ router.get("/multi-metric", async (req, res) => {
     `, [req.fundOrgId, metrics]);
 
     // Group by metric_name → array of {period, ...cohorts}
+    // Note: pg returns numeric columns as strings — coerce to float
     const result = {};
     for (const row of rows) {
       if (!result[row.metric_name]) result[row.metric_name] = {};
       const pd = row.period_label;
       if (!result[row.metric_name][pd]) result[row.metric_name][pd] = { period: pd };
-      result[row.metric_name][pd][row.cohort_id] = row.suppressed ? null : row.metric_value;
+      result[row.metric_name][pd][row.cohort_id] = row.suppressed ? null : parseFloat(row.metric_value);
     }
 
     // Convert nested objects to arrays
