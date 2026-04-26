@@ -101,7 +101,11 @@ SELECT
 FROM public.plans p
 JOIN public.users u ON p.user_id = u.id
 LEFT JOIN public.clients c ON c.plan_id = p.id AND c.client_role = 'client1'
-LEFT JOIN public.incomes i ON i.client_id = c.id LIMIT 1
+LEFT JOIN (
+  SELECT DISTINCT ON (client_id) client_id, amount AS gross_income
+  FROM public.incomes
+  ORDER BY client_id, id
+) i ON i.client_id = c.id
 LEFT JOIN (
   -- Count goals per plan from the plan's JSONB data if stored there,
   -- or from a goals table if one exists
