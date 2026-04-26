@@ -142,34 +142,37 @@ const METRICS = [
 // These are % of AI questions within cohort
 const TOPIC_DISTRIBUTIONS = {
   // M1 values per cohort [C1, C2, C3, C4, C5]
+  // Anxiety (T04) starts high — optimisation topics (T01, T06, T07) start low.
+  // By M6 the shift is clearly visible — anxiety falls, optimisation rises.
+  // All columns sum to exactly 100.
   start: {
-    T01: [6,  20, 28, 16,  2],
-    T02: [8,  11, 21, 30, 33],
-    T03: [11, 18, 24, 20,  9],
-    T04: [16, 15, 11, 13, 18],
-    T05: [30, 16,  7,  5,  3],
-    T06: [1,   4, 10, 17, 23],
-    T07: [4,   8,  8,  7,  2],
-    T08: [20,  9,  4,  2,  1],
-    T09: [9,   7,  4,  2,  1],
-    T10: [1,   2,  3,  6, 10],
-    T11: [1,   3,  4,  5,  2],
-    T12: [13,  7,  6,  3,  4],  // totals should be ~100 per column
+    T01: [5, 14, 20, 12, 2],    // salary sacrifice — starts low
+    T02: [6, 9, 15, 21, 29],    // age pension — cohort-driven
+    T03: [7, 12, 14, 13, 7],    // retirement timing
+    T04: [24, 22, 19, 21, 25],  // anxiety — starts high across all cohorts
+    T05: [22, 12, 4, 3, 2],     // property/life events — skews young
+    T06: [1, 3, 7, 13, 17],     // drawdown — starts low, skews older
+    T07: [3, 6, 6, 5, 2],       // tax strategies — starts low
+    T08: [14, 6, 2, 1, 1],      // family events
+    T09: [7, 6, 3, 1, 1],       // insurance
+    T10: [1, 2, 2, 4, 9],       // estate planning
+    T11: [1, 2, 3, 3, 2],       // SMSF
+    T12: [9, 6, 5, 3, 3],       // general education
   },
-  // M6 values per cohort
+  // M6 values: anxiety has fallen, optimisation topics clearly risen
   end: {
-    T01: [8,  24, 31, 14,  2],
-    T02: [6,   9, 19, 28, 31],
-    T03: [9,  16, 22, 18,  8],
-    T04: [14, 13,  9, 11, 16],
-    T05: [28, 14,  5,  3,  2],
-    T06: [2,   6, 11, 19, 24],
-    T07: [5,   9, 10,  6,  2],
-    T08: [18,  8,  3,  2,  1],
-    T09: [8,   6,  3,  1,  1],
-    T10: [1,   3,  4,  7, 12],
-    T11: [1,   4,  5,  4,  2],
-    T12: [10,  8,  5,  2,  3],
+    T01: [10, 22, 30, 16, 3],   // salary sacrifice — clear growth
+    T02: [6, 7, 12, 21, 29],    // age pension — stable
+    T03: [7, 12, 13, 12, 7],    // retirement timing — stable
+    T04: [13, 11, 9, 12, 16],   // anxiety — meaningful decline (-10pp avg)
+    T05: [24, 11, 3, 2, 1],     // property — slight decline
+    T06: [2, 6, 11, 19, 24],    // drawdown — clear growth in older cohorts
+    T07: [6, 10, 10, 7, 3],     // tax strategies — meaningful growth
+    T08: [15, 6, 2, 1, 1],      // family events — stable
+    T09: [7, 5, 2, 1, 1],       // insurance — stable
+    T10: [1, 2, 3, 5, 11],      // estate planning — slight growth
+    T11: [1, 3, 3, 3, 2],       // SMSF — stable
+    T12: [8, 5, 2, 1, 2],       // general — slight decline as platform matures
   },
 };
 
