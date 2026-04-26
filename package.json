@@ -1,0 +1,39 @@
+{
+  "name": "beacon",
+  "version": "0.1.0",
+  "description": "Beacon — Member Intelligence Platform by save2retire",
+  "type": "commonjs",
+  "scripts": {
+    "dev:server": "nodemon server/index.js",
+    "dev:frontend": "vite",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:frontend\"",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "seed": "node seed/seed.js",
+    "migrate": "node seed/migrate.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "express-rate-limit": "^7.2.0",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "node-cron": "^3.0.3",
+    "pdfkit": "^0.18.0",
+    "pg": "^8.11.5",
+    "recharts": "^3.8.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-react": "^7.23.3",
+    "@vitejs/plugin-react": "^4.2.1",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.0",
+    "vite": "^5.2.0"
+  }
+}
