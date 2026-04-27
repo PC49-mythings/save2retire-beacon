@@ -28,21 +28,6 @@ export default function Topics() {
       .finally(() => setLoading(false));
   }, []);
 
-  // Collapse anxiety and optimisation topic groups into a single trend line each
-  // Debug — log the trend data to confirm what's in the response
-  useEffect(() => {
-    if (Object.keys(trends).length > 0) {
-      const t01 = trends["ai_topic_pct_T01"];
-      const t06 = trends["ai_topic_pct_T06"];
-      const t07 = trends["ai_topic_pct_T07"];
-      const t04 = trends["ai_topic_pct_T04"];
-      console.log("T04 (anxiety) ALL values:", t04?.map(p => ({ period: p.period, ALL: p.ALL })));
-      console.log("T01 (salary sac) ALL values:", t01?.map(p => ({ period: p.period, ALL: p.ALL })));
-      console.log("T06 (drawdown) ALL values:", t06?.map(p => ({ period: p.period, ALL: p.ALL })));
-      console.log("T07 (tax) ALL values:", t07?.map(p => ({ period: p.period, ALL: p.ALL })));
-    }
-  }, [trends]);
-
   const anxOptTrend = useMemo(() => {
     const pMap = {};
 
