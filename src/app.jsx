@@ -15,8 +15,6 @@ import Engagement      from "./pages/portal/Engagement";
 import Preparedness    from "./pages/portal/Preparedness";
 import Topics          from "./pages/portal/Topics";
 import Behaviour       from "./pages/portal/Behaviour";
-import Reports         from "./pages/portal/Reports";
-import Settings        from "./pages/portal/Settings";
 
 // Shared components
 import Sidebar from "./components/Sidebar";
@@ -172,7 +170,7 @@ function App() {
           {portalPage === "behaviour"    && <Behaviour />}
           {portalPage === "reports"       && <Reports />}
           {portalPage === "settings"      && <Settings orgRole={orgRole} />}
-          {portalPage === "settings"     && <div className="page-body" style={{ paddingTop: 48 }}><div className="empty-state"><p>User management, branding, and API keys — Phase 4.</p></div></div>}
+          {portalPage === "settings"      && <Settings orgRole={orgRole} />}
         </main>
       </div>
     </div>

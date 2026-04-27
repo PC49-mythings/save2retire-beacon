@@ -15,6 +15,9 @@ const { pool } = require("./db");
 
 const app = express();
 const PORT = process.env.PORT || 3002;
+
+// Trust the EB load balancer proxy — required for express-rate-limit to work correctly
+app.set("trust proxy", 1);
 const isDev = process.env.NODE_ENV !== "production";
 
 // ─── Static assets ────────────────────────────────────────────────────────────
@@ -83,7 +86,7 @@ app.use("/api/admin",        require("./routes/admin"));
 app.use("/api/org",          require("./routes/org"));
 app.use("/api/intelligence", require("./routes/intelligence"));
 app.use("/api/reports",      require("./routes/reports"));
-// app.use("/api/feed",         require("./routes/feed"));
+app.use("/api/feed",         require("./routes/feed"));
 
 // ─── SPA fallback ─────────────────────────────────────────────────────────────
 // All non-API GET requests serve the React app (client-side routing)

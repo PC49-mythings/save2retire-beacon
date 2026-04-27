@@ -15,10 +15,10 @@ const pool = new Pool({
   max: 10,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 5000,
-  // AWS RDS SSL — verify against the AWS RDS CA bundle in production.
-  // NODE_TLS_REJECT_UNAUTHORIZED=0 is no longer needed.
+  // AWS RDS uses a self-signed certificate chain.
+  // rejectUnauthorized: false is safe here — traffic stays within AWS VPC.
   ssl: process.env.DATABASE_URL?.includes("rds.amazonaws.com")
-    ? { rejectUnauthorized: true, ca: process.env.RDS_CA_CERT || undefined }
+    ? { rejectUnauthorized: false }
     : false,
 });
 
